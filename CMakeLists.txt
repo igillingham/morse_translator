@@ -3,4 +3,4 @@ project(morseReader)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(morseReader main.cpp)
+add_executable(morseReader main.cpp MorseReader.cpp MorseReader.h)
