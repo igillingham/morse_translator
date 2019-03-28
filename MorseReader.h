@@ -6,6 +6,8 @@
 #define MORSEREADER_MORSEREADER_H
 
 #include <string>
+#include <stack>
+
 using namespace std;
 
 #include "Morse.h"
@@ -17,8 +19,9 @@ class MorseReader
         MorseReader(string strFilename);
         ~MorseReader();
 
-        char fromMorse(string strMorseChar);
-        string toMorse(char c);
+        string fromMorse(string strMorseChar);
+        string fromMorseStream(string strMorseStream);
+        string toMorse(string c);
 
     private:
         string m_strFilename;

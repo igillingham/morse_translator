@@ -28,11 +28,22 @@ Morse::Morse()
     morse_2_char_map["-"] =  "t";
     morse_2_char_map["..-"] =  "u";
     morse_2_char_map["...-"] =  "v";
-    morse_2_char_map[".--."] =  "w";
+    morse_2_char_map[".--"] =  "w";
     morse_2_char_map["-..-"] =  "x";
     morse_2_char_map["-.--"] =  "y";
     morse_2_char_map["--.."] =  "z";
-    
+
+    morse_2_char_map[".----"] =  "1";
+    morse_2_char_map["..---"] =  "2";
+    morse_2_char_map["...--"] =  "3";
+    morse_2_char_map["....-"] =  "4";
+    morse_2_char_map["....."] =  "5";
+    morse_2_char_map["-...."] =  "6";
+    morse_2_char_map["--..."] =  "7";
+    morse_2_char_map["---.."] =  "8";
+    morse_2_char_map["----."] =  "9";
+    morse_2_char_map["-----"] =  "0";
+
     char_2_morse_map["a"] = ".-";
     char_2_morse_map["b"] = "-...";
     char_2_morse_map["c"] = "-.-.";
@@ -60,6 +71,17 @@ Morse::Morse()
     char_2_morse_map["y"] = "-.--";
     char_2_morse_map["z"] = "--..";
 
+    char_2_morse_map["1"] = ".----";
+    char_2_morse_map["2"] = "..---";
+    char_2_morse_map["3"] = "...--";
+    char_2_morse_map["4"] = "....-";
+    char_2_morse_map["5"] = ".....";
+    char_2_morse_map["6"] = "-....";
+    char_2_morse_map["7"] = "--...";
+    char_2_morse_map["8"] = "---..";
+    char_2_morse_map["9"] = "----.";
+    char_2_morse_map["0"] = "-----";
+    char_2_morse_map[" "] = "  ";
     }
 
 Morse::~Morse()
@@ -67,21 +89,29 @@ Morse::~Morse()
 
     }
 
-char Morse::fromMorse(std::string morseCharacter)
+std::string Morse::fromMorse(std::string morseCharacter)
     {
-    char cRet;
+    std::string strRet = " "; // Return space by default
 
-    cRet = morse_2_char_map[morseCharacter].c_str()[0];
+    std::map<std::string, std::string>::iterator it = morse_2_char_map.find(morseCharacter);
+    if (it != morse_2_char_map.end())
+        {
+        // Character in Morse table, so assume space
+        strRet = morse_2_char_map[morseCharacter].c_str()[0];
+        }
 
-    return( cRet );
+    return( strRet );
     }
 
-std::string Morse::toMorse(const char c)
+std::string Morse::toMorse(std::string c)
     {
-    std::string strRet;
+    std::string strRet = " "; // Return space by default
 
-
-    strRet = this->char_2_morse_map.at(std::string(1,c));
+    std::map<std::string, std::string>::iterator it = char_2_morse_map.find(c);
+    if (it != char_2_morse_map.end())
+        {
+        strRet = char_2_morse_map.at(c);
+        }
 
 
     return( strRet );

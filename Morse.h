@@ -13,8 +13,8 @@ class Morse
     public:
         Morse(void);
         ~Morse();
-        char fromMorse(std::string morseCharacter);
-        std::string toMorse(char c);
+        std::string fromMorse(std::string morseCharacter);
+        std::string toMorse(std::string c);
 
     private:
         std::map<std::string, std::string> morse_2_char_map;
